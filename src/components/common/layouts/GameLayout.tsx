@@ -10,8 +10,9 @@ const Inner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin: 0 auto;
   
-  width: 80%;
   height: 100%;
   max-width: 1440px;
 `;
