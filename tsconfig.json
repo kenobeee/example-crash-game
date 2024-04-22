@@ -9,19 +9,13 @@
       "@components/*": [
         "components/*"
       ],
-      "@lib/": [
+      "@lib": [
         "lib"
       ],
       "@lib/*": [
         "lib/*"
       ],
-      "@store/": [
-        "store"
-      ],
-      "@store/*": [
-        "store/*"
-      ],
-      "@config/": [
+      "@config": [
         "config"
       ],
       "@config/*": [
