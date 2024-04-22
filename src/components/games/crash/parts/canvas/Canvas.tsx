@@ -1,13 +1,12 @@
 import React from 'react';
-import {Stage, Layer} from 'react-konva';
 import styled from 'styled-components';
+import {Stage, Container} from '@pixi/react';
 
 import {colorSchema} from '@lib/constants';
 
 import {Airplane, AirportBackground, SkyBackground, Coefficient} from './parts';
 
-import {useCoefficient} from '../../utils';
-import {useCrashStore} from '@lib/store/crash';
+import {useCoefficient, useAnimationTimeStamp} from '../../utils';
 
 const Wrapper = styled.div`
   position: relative;
@@ -23,20 +22,19 @@ const Wrapper = styled.div`
 `;
 
 export const Canvas = () => {
-    const {isRoundRunning, roundStartDate, coefficient} = useCrashStore(store => store);
-
-    useCoefficient({startDate: roundStartDate, isRoundRunning});
+    useCoefficient();
+    useAnimationTimeStamp();
 
     return (
         <Wrapper>
             <Stage width={1000} height={600}>
-                <Layer>
+                <Container>
                     <SkyBackground/>
                     <AirportBackground/>
                     <Airplane/>
-                </Layer>
+                </Container>
             </Stage>
-            <Coefficient value={coefficient}/>
+            <Coefficient/>
         </Wrapper>
     );
 };

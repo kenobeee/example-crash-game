@@ -2,10 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {colorSchema} from '@lib/constants';
-
-type CoefficientP = {
-    value:number
-};
+import {useCrashStore} from '@lib/store/crash';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -18,6 +15,8 @@ const Wrapper = styled.div`
   
   width: 100%;
   height: 100%;
+  
+  user-select: none;
 `;
 
 const StyledCoefficient = styled.h1`
@@ -28,8 +27,8 @@ const StyledCoefficient = styled.h1`
 
 const presentableCoefficient = (ms:number):string => `${ms.toFixed(2)}x`;
 
-export const Coefficient = (props:CoefficientP) => {
-    const {value} = props;
+export const Coefficient = () => {
+    const value = useCrashStore(store => store.coefficient);
 
     return (
         <Wrapper>

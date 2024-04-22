@@ -1,20 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import {Image} from 'react-konva';
+import React, {useMemo} from 'react';
+import {Spring} from 'react-spring';
+import {Sprite} from '@pixi/react-animated';
+
+import {animation, AnimationIteration} from '../animation';
+import {useCrashStore} from '@lib/store/crash';
 
 export const Airplane = () => {
-    const [image, setImage] = useState();
+    const animateTimeStamp = useCrashStore(store => store.animateTimeStamp);
+    const isRoundRunning = useCrashStore(store => store.isRoundRunning);
 
-    useEffect(() => {
-        const image = new window.Image();
-
-        image.src = require('/assets/img/airplane.png');
-        // @ts-ignore
-        image.addEventListener('load', () => setImage(image));
-    }, []);
+    const physics = useMemo(():{
+        from:AnimationIteration
+        to:AnimationIteration
+    } => ({
+        from: animation.airplane[animateTimeStamp],
+        to: animation.airplane[animateTimeStamp + 1]
+    }), [animateTimeStamp, isRoundRunning]);
 
     return (
-        <>
-            <Image x={20} y={540} width={200} height={50} image={image}/>
-        </>
+        // @ts-ignore
+        <Spring native {...physics} config={{duration: 1000}}>
+            {(props) =>
+                <Sprite image={require('/assets/img/airplane.png')} {...props} />}
+        </Spring>
     );
 };
