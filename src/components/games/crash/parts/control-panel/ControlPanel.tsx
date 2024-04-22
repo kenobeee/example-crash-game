@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import styled from 'styled-components';
 import {useCrashStore} from '@lib/store/crash';
+import {colorSchema} from '@lib/constants';
 
 const Wrapper = styled.div`
   margin-top: 40px;
@@ -9,9 +10,16 @@ const Wrapper = styled.div`
 `;
 
 const StartButton = styled.button`
-  padding: 14px 8px;
+  padding: 8px 20px;
 
-  background-color: #fff;
+  background-color: ${colorSchema.secondaryBg};
+  border: 1px solid ${colorSchema.border};
+  
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${colorSchema.accentText};
+  
+  cursor: pointer;
 `;
 
 export const ControlPanel = () => {

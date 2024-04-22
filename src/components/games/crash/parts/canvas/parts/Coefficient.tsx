@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {colorSchema} from '@lib/constants';
+
 type CoefficientP = {
     value:number
 };
@@ -20,7 +22,7 @@ const Wrapper = styled.div`
 
 const StyledCoefficient = styled.h1`
   font-size: 4rem;
-  color: #fff;
+  color: ${colorSchema.accentText};
   font-weight: 600;
 `;
 
@@ -28,8 +30,6 @@ const presentableCoefficient = (ms:number):string => `${ms.toFixed(2)}x`;
 
 export const Coefficient = (props:CoefficientP) => {
     const {value} = props;
-
-    console.log(value);
 
     return (
         <Wrapper>

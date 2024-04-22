@@ -1,4 +1,5 @@
 import {createGlobalStyle} from 'styled-components';
+import {colorSchema} from '@lib/constants';
 
 export default createGlobalStyle`
   *, *::after, *::before {
@@ -20,8 +21,8 @@ export default createGlobalStyle`
     -webkit-scrollbar: auto; /* отображение скролл-баров */
 
     font-family: Helvetica Neue, Helvetica, Arial;
-
-    background-color: #202326;
+    
+    background-color: ${colorSchema.primaryBg};
   }
 
   span {
