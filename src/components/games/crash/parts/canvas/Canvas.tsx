@@ -4,9 +4,11 @@ import {Stage, Container} from '@pixi/react';
 
 import {colorSchema} from '@lib/constants';
 
-import {Airplane, AirportBackground, SkyBackground, Coefficient} from './parts';
+import {Airplane, AirportBackground, SkyBackground, Coefficient, Explosion} from './parts';
 
 import {useCoefficient, useAnimationTimeStamp} from '../../utils';
+import {Sprite} from '@pixi/react-animated';
+import {useCrashStore} from '@lib/store/crash';
 
 const Wrapper = styled.div`
   position: relative;
@@ -22,6 +24,8 @@ const Wrapper = styled.div`
 `;
 
 export const Canvas = () => {
+    const isRoundEnding = useCrashStore(store => store.isRoundEnding);
+
     useCoefficient();
     useAnimationTimeStamp();
 
@@ -31,7 +35,11 @@ export const Canvas = () => {
                 <Container>
                     <SkyBackground/>
                     <AirportBackground/>
-                    <Airplane/>
+                    <Airplane>
+                        {isRoundEnding
+                            ? <Explosion/>
+                            : <Sprite image={require('/assets/img/airplane.png')} width={200} height={50}/>}
+                    </Airplane>
                 </Container>
             </Stage>
             <Coefficient/>

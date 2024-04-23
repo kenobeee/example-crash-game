@@ -1,5 +1,5 @@
 type Coords = {x:number, y:number};
-type Size = {width:number, height:number, scale?:number};
+type Size = {width?:number, height?:number, scale?:number};
 type Rotate = {rotation?:number};
 export type AnimationIteration = Coords & Size & Rotate;
 
@@ -12,20 +12,21 @@ interface IAnimation {
 export const animation:IAnimation = {
     airplane: [
         // on the ground x6
-        {x: 10, y: 530, width: 250, height: 70, rotation: 0},
-        {x: 10, y: 530, width: 250, height: 70, rotation: 0},
-        {x: 110, y: 530, width: 250, height: 70, rotation: -0.01},
-        {x: 160, y: 530, width: 250, height: 70, rotation: -0.03},
-        {x: 210, y: 530, width: 250, height: 70, rotation: -0.06},
-        {x: 260, y: 530, width: 250, height: 70, rotation: -0.1},
+        {x: 10, y: 530, rotation: 0},
+        {x: 10, y: 530, rotation: 0},
+        {x: 110, y: 530, rotation: -0.01},
+        {x: 160, y: 530, rotation: -0.03},
+        {x: 210, y: 530, rotation: -0.06},
+        {x: 260, y: 530, rotation: -0.1},
         // up x4
-        {x: 310, y: 500, width: 250, height: 70, rotation: -0.2},
-        {x: 360, y: 450, width: 250, height: 70, rotation: -0.2},
-        {x: 410, y: 370, width: 250, height: 70, rotation: -0.2},
-        {x: 460, y: 300, width: 250, height: 70, rotation: -0.3},
+        {x: 310, y: 500, rotation: -0.15},
+        {x: 360, y: 450, rotation: -0.2},
+        {x: 410, y: 400, rotation: -0.25},
+        {x: 460, y: 350, rotation: -0.3},
         // stabling
-        {x: 510, y: 230, width: 250, height: 70, rotation: -0.3},
-        {x: 560, y: 170, width: 250, height: 70, rotation: -0.3},
+        {x: 510, y: 300, rotation: -0.3},
+        {x: 560, y: 250, rotation: -0.3},
+        {x: 610, y: 200, rotation: -0.3},
     ],
     sky: [
         // on the ground x6

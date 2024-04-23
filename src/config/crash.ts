@@ -11,5 +11,5 @@ export const crashConfig:CrashConfig = {
     animationTimeStampInterval: 500,
     explosionCoefficient: 2,
     preparingTime: 5000,
-    endingTime: 2000
+    endingTime: 1000
 };

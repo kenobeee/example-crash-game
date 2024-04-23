@@ -1,11 +1,13 @@
-import React, {useMemo} from 'react';
+import React, {ReactNode, useMemo} from 'react';
 import {Spring} from 'react-spring';
-import {Sprite} from '@pixi/react-animated';
+import {Container} from '@pixi/react-animated';
+
+import {crashConfig} from '@config';
 
 import {animation, AnimationIteration} from '../animation';
 import {useCrashStore} from '@lib/store/crash';
 
-export const Airplane = () => {
+export const Airplane = ({children}:{children:ReactNode}) => {
     const animateTimeStamp = useCrashStore(store => store.animateTimeStamp);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
 
@@ -18,10 +20,13 @@ export const Airplane = () => {
     }), [animateTimeStamp, isRoundRunning]);
 
     return (
-        // @ts-ignore
-        <Spring native {...physics} config={{duration: 1000}}>
-            {(props) =>
-                <Sprite image={require('/assets/img/airplane.png')} {...props} />}
-        </Spring>
+        <>
+            <Spring {...physics} config={{duration: crashConfig.animationTimeStampInterval}}>
+                {(props:any) =>
+                    <Container {...props}>
+                        {children}
+                    </Container>}
+            </Spring>
+        </>
     );
 };
