@@ -16,6 +16,6 @@ export const AirportBackground = (fromTo:AnimatedFields) => useMemo(() => (
                 {...props}
                 width={width}
                 height={height}
-                image={require('/assets/img/airport-bg.png')}/>}
+                image={require('/assets/img/games/crash/airport-bg.png')}/>}
     </Spring>
 ), [fromTo]);
