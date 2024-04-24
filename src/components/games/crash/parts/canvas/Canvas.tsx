@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Stage, Container} from '@pixi/react';
 
 import {colorSchema} from '@lib/constants';
-import {crashConfig} from '@config';
+import {crashConfig} from '@components/games/crash/config';
 
 import {AirplaneContainer, AirportBackground, CityBackground, Coefficient, Explosion, AirplaneBody} from './parts';
 
@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 
 const TOTAL_EXPLOSION_FRAMES:number = 60;
 const TOTAL_FlAMES_FRAMES:number = 20;
+const {canvas: {stage}} = crashConfig;
 
 export const Canvas = () => {
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);
@@ -53,8 +54,8 @@ export const Canvas = () => {
     return (
         <Wrapper>
             <Stage
-                width={crashConfig.canvas.stage.width}
-                height={crashConfig.canvas.stage.height}>
+                width={stage.width}
+                height={stage.height}>
                 <Container>
                     <CityBackground {...cityBackgroundFrameIteration}/>
                     <AirportBackground {...airportBackgroundFrameIteration}/>

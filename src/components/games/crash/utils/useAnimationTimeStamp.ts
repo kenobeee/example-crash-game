@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 
-import {crashConfig} from '@config';
+import {crashConfig} from '@components/games/crash/config';
 
-import {AnimationIteration, animationPath} from '@components/games/crash/parts/canvas/animation';
+import {AnimationIteration, animationPath} from '@components/games/crash/config/animation';
 
 import {useCrashStore} from '@lib/store/crash';
 

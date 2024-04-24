@@ -1,4 +1,4 @@
-import {Size} from '@components/games/crash/parts/canvas/animation';
+import {Size} from '@components/games/crash/config/animation';
 
 interface CrashConfig {
     coefficientUpdateInterval:number, // ms

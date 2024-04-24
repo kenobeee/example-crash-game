@@ -1,18 +1,20 @@
 import React, {useMemo} from 'react';
 import {Container} from '@pixi/react';
 import {AnimatedSprite, Sprite} from '@pixi/react-animated';
-import {crashConfig} from '@config';
+import {crashConfig} from '@components/games/crash/config';
 
 type AirplaneBodyP = {
     flamesFrames:string[]
 };
 
+const {canvas: {airplane}} = crashConfig;
+
 export const AirplaneBody = ({flamesFrames}:AirplaneBodyP) => useMemo(() => (
     <Container>
         <Sprite
             video={require('/assets/img/airplane.png')}
-            width={crashConfig.canvas.airplane.width}
-            height={crashConfig.canvas.airplane.height}/>
+            width={airplane.width}
+            height={airplane.height}/>
         <AnimatedSprite
             x={-70}
             y={50}

@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 
-import {crashConfig} from '@config';
+import {crashConfig} from '@components/games/crash/config';
 
 import {useCrashStore} from '@lib/store/crash';
 

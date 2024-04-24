@@ -15,12 +15,6 @@
       "@lib/*": [
         "lib/*"
       ],
-      "@config": [
-        "config"
-      ],
-      "@config/*": [
-        "config/*"
-      ]
     },
     "allowJs": true,
     "sourceMap": true,

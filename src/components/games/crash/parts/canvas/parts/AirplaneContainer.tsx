@@ -2,7 +2,7 @@ import React, {ReactNode, useMemo} from 'react';
 import {Spring} from 'react-spring';
 import {Container} from '@pixi/react-animated';
 
-import {crashConfig} from '@config';
+import {crashConfig} from '@components/games/crash/config';
 
 import {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
 
