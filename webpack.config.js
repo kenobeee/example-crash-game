@@ -10,6 +10,7 @@ const customPlugins = [
         title: 'siter',
         template: path.resolve(__dirname, './src/template.html'),
         filename: 'index.html',
+        publicPath: '/'
     }),
     new CleanWebpackPlugin(),
     new ESLintPlugin({
