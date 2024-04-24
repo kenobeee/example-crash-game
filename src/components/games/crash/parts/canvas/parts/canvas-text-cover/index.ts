@@ -1,0 +1,1 @@
+export {CanvasTextCover} from './CanvasTextCover';

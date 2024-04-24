@@ -8,7 +8,7 @@ import {useCrashStore} from '@lib/store/crash';
 
 export type AnimatedFields = { from:AnimationIteration, to:AnimationIteration };
 
-type UseAnimationTimeStamp = (isRoundRunning:boolean, isRoundPreparing:boolean) => {
+type UseAnimationTimeStamp = () => {
     airplaneFrameIteration:AnimatedFields
     cityBackgroundFrameIteration:AnimatedFields
     airportBackgroundFrameIteration:AnimatedFields
@@ -16,8 +16,10 @@ type UseAnimationTimeStamp = (isRoundRunning:boolean, isRoundPreparing:boolean) 
 
 const {airplane, cityBg, airport} = animationPath;
 
-export const useAnimationTimeStamp:UseAnimationTimeStamp = (_, isRoundPreparing) => {
+export const useAnimationTimeStamp:UseAnimationTimeStamp = () => {
+    const isRoundPreparing = useCrashStore(store => store.isRoundPreparing);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
+
     const [s, setS] = useState<number>(0);
 
     let interval:NodeJS.Timeout;

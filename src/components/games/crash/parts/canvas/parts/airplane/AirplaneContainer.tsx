@@ -4,7 +4,7 @@ import {Container} from '@pixi/react-animated';
 
 import {crashConfig} from '@components/games/crash/config';
 
-import {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
+import type {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
 
 const {animationTimeStampInterval} = crashConfig;
 

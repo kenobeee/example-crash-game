@@ -43,8 +43,7 @@ export const Crash = () => {
             {!isStarted &&
                 <StartMenu onClick={() => {
                     setIsStarted(true);
-                    setTimeout(() => init(), 0);
-                }}>
+                    setTimeout(() => init(), 0);}}>
                     <StartText>
                         Нажмите для старта
                     </StartText>

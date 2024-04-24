@@ -24,7 +24,7 @@ const SomeValue = styled.div`
   margin-top: -20%;
 `;
 
-export const CanvasCover = () => {
+export const CanvasTextCover = () => {
     const isRoundPreparing = useCrashStore(store => store.isRoundPreparing);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);

@@ -1,1 +1,0 @@
-export {CanvasCover} from './CanvasCover';
