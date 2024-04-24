@@ -3,7 +3,7 @@ import {AnimatedSprite} from '@pixi/react-animated';
 import {crashConfig} from '@components/games/crash/config';
 
 type ExplosionP = {
-    explosionFrames:string[]
+    explosionFrames:HTMLImageElement[]
 };
 
 const {canvas: {airplane, explosion}} = crashConfig;
@@ -16,5 +16,6 @@ export const Explosion = ({explosionFrames}:ExplosionP) => useMemo(() => (
         height={explosion.height}
         animationSpeed={0.5}
         isPlaying={true}
+        // @ts-ignore
         images={explosionFrames}/>
 ), []);
