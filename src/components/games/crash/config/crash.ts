@@ -1,26 +1,12 @@
-import {Size} from '@components/games/crash/config/animation';
-
-interface CrashConfig {
-    coefficientUpdateInterval:number, // ms
-    animationTimeStampInterval:number // ms
-    explosionCoefficient:number // float | integer
-    preparingTime:number // s
-    endingTime:number // ms
-    canvas:{
-        stage:Required<Size>
-        airport:Required<Size>
-        city:Required<Size>
-        airplane:Required<Size>
-        explosion:Required<Size>
-    }
-}
+import type {CrashConfig} from '@components/games/crash/type';
 
 export const crashConfig:CrashConfig = {
-    coefficientUpdateInterval: 10,
-    animationTimeStampInterval: 500,
-    explosionCoefficient: 2,
-    preparingTime: 5000,
-    endingTime: 2000,
+    defaultUserBetValue: 1, // Ставка юзера (int)
+    coefficientUpdateInterval: 10, // Интервал обновления коэффициента (ms)
+    animationTimeStampInterval: 500, // Интервал между итерациями анимации (ms)
+    explosionCoefficient: 2, // КОЭФФИЦИЕНТ НА КОТОРОМ ЗАКАНЧИВАЕТСЯ РАУНД (float | integer)
+    preparingTime: 5, // Время подготовки к новому раунду (s)
+    endingTime: 2000, // Время проигрыша анимации взрыва (ms)
     canvas: {
         stage: {
             width: 1000,

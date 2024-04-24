@@ -12,7 +12,7 @@ const {canvas: {airplane}} = crashConfig;
 export const AirplaneBody = ({flamesFrames}:AirplaneBodyP) => useMemo(() => (
     <Container>
         <Sprite
-            video={require('/assets/img/airplane.png')}
+            image={require('/assets/img/airplane.png')}
             width={airplane.width}
             height={airplane.height}/>
         <AnimatedSprite

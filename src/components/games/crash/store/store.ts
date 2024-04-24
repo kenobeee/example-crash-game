@@ -1,34 +1,15 @@
 import {create} from 'zustand';
 
-export interface ICrashState {
-    coefficient:number
-    preparingTimer:number
-    roundStartDate:number
-    userBet:number | null
-    userWon:number | null
-    isRoundRunning:boolean
-    isRoundPreparing:boolean
-    isRoundEnding:boolean
-}
+import {crashConfig} from '@components/games/crash/config';
 
-export interface ICrashActions {
-    setCoefficient:(value:ICrashState['coefficient']) => void
-    decrementPreparingTimer:() => void
-    startRound:() => void
-    startPrepare:() => void
-    endRound:() => void
-    bet:() => void
-    won:() => void
-}
+import type {CrashStore} from '@components/games/crash/type';
 
-export type CrashStore = ICrashState & ICrashActions;
-
-export const DEFAULT_USER_BET_VALUE:number = 1;
+const {preparingTime, defaultUserBetValue} = crashConfig;
 
 export const useCrashStore = create<CrashStore>((set) =>
     ({
         coefficient: 1,
-        preparingTimer: 5,
+        preparingTimer: preparingTime,
         roundStartDate: 0,
         userBet: null,
         userWon: null,
@@ -59,17 +40,17 @@ export const useCrashStore = create<CrashStore>((set) =>
             isRoundEnding: false,
             isRoundPreparing: true,
             coefficient: 1,
-            preparingTimer: 5,
+            preparingTimer: preparingTime,
             userBet: null,
             userWon: null,
         })),
         bet: () => set(state => ({
             ...state,
-            userBet: DEFAULT_USER_BET_VALUE
+            userBet: defaultUserBetValue
         })),
         won: () => set(state => ({
             ...state,
-            userWon: DEFAULT_USER_BET_VALUE * state.coefficient,
+            userWon: defaultUserBetValue * state.coefficient,
             userBet: null
         }))
     }));

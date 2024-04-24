@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 
 import {crashConfig} from '@components/games/crash/config';
 
-import {useCrashStore} from '@lib/store/crash';
+import {useCrashStore} from '@components/games/crash/store';
 
 const progress = (ms:number):number => Math.floor(100 * Math.pow(Math.exp(1), 0.00006 * ms)) / 100;
 
@@ -37,6 +37,10 @@ export const useCoefficient = () => {
             return () => clearInterval(roundGoingInterval);
         }
 
+    }, [isRoundRunning]);
+
+    // eslint-disable-next-line consistent-return
+    useEffect(() => {
         if (isRoundEnding) {
             roundEndingTimeout = setTimeout(() => {
                 startPrepare();
@@ -44,8 +48,7 @@ export const useCoefficient = () => {
 
             return () => clearInterval(roundEndingTimeout);
         }
-
-    }, [isRoundRunning, isRoundEnding]);
+    }, [isRoundEnding]);
 
     // eslint-disable-next-line consistent-return
     useEffect(() => {
@@ -53,7 +56,7 @@ export const useCoefficient = () => {
             const startPreparingTime = new Date().getTime();
 
             roundPreparingInterval = setInterval(() => {
-                if (new Date().getTime() - startPreparingTime >= crashConfig.preparingTime) startRound();
+                if (new Date().getTime() - startPreparingTime >= crashConfig.preparingTime * 1000) startRound();
 
                 decrementPreparingTimer();
             }, 1000);

@@ -1,0 +1,1 @@
+export {useCrashStore} from '@components/games/crash/store/store';

@@ -1,13 +1,4 @@
-type Coords = {x:number, y:number};
-export type Size = {width?:number, height?:number};
-type Rotate = {rotation?:number, angle?:number};
-export type AnimationIteration = Coords & Size & Rotate;
-
-interface IAnimationPath {
-    airplane:AnimationIteration[]
-    cityBg:AnimationIteration[]
-    airport:AnimationIteration[]
-}
+import type {IAnimationPath} from '../type';
 
 export const animationPath:IAnimationPath = {
     airplane: [

@@ -4,7 +4,7 @@ import {Sprite} from '@pixi/react-animated';
 
 import {crashConfig} from '@components/games/crash/config';
 
-import {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
+import type {AnimatedFields} from '../../../type';
 
 const {animationTimeStampInterval, canvas} = crashConfig;
 const {airport: {width, height}} = canvas;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {Canvas, ControlPanel} from './parts';
 import {colorSchema} from '@lib/constants';
-import {useCrashStore} from '@lib/store/crash';
+import {useCrashStore} from '@components/games/crash/store';
 
 const Wrapper = styled.section`
   display: flex;

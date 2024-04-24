@@ -1,12 +1,10 @@
 import {useEffect, useState} from 'react';
 
-import {crashConfig} from '@components/games/crash/config';
+import {animationPath, crashConfig} from '../config';
 
-import {AnimationIteration, animationPath} from '@components/games/crash/config/animation';
+import {useCrashStore} from '@components/games/crash/store';
 
-import {useCrashStore} from '@lib/store/crash';
-
-export type AnimatedFields = { from:AnimationIteration, to:AnimationIteration };
+import type {AnimationIteration, AnimatedFields} from '../type';
 
 type UseAnimationTimeStamp = () => {
     airplaneFrameIteration:AnimatedFields

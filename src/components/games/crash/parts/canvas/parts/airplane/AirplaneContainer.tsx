@@ -4,11 +4,16 @@ import {Container} from '@pixi/react-animated';
 
 import {crashConfig} from '@components/games/crash/config';
 
-import type {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
+import type {AnimatedFields} from '@components/games/crash/type';
 
 const {animationTimeStampInterval} = crashConfig;
 
-export const AirplaneContainer = ({children, fromTo}:{children:ReactNode, fromTo:AnimatedFields}) =>
+type AirplaneContainerP = {
+    children:ReactNode
+    fromTo:AnimatedFields
+};
+
+export const AirplaneContainer = ({children, fromTo}:AirplaneContainerP) =>
     useMemo(() => (
         <Spring
             {...fromTo}

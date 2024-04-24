@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {crashConfig} from '@components/games/crash/config';
 import {colorSchema} from '@lib/constants';
 
-import {useCrashStore} from '@lib/store/crash';
-import {DEFAULT_USER_BET_VALUE} from '@lib/store/crash/store';
+import {useCrashStore} from '@components/games/crash/store';
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ export const ControlPanel = () => {
     const resolver = () => {
         if (isDidBetAndRoundGoing)
             return <CashOutButtonStyled onClick={won}>
-                Забрать ставку ${(DEFAULT_USER_BET_VALUE * coefficient).toFixed(2)}$
+                Забрать ставку ${(crashConfig.defaultUserBetValue * coefficient).toFixed(2)}$
             </CashOutButtonStyled>;
 
         if (isDidNotBetAndRoundGoing)
@@ -69,7 +69,7 @@ export const ControlPanel = () => {
 
         if (isDidNotBetAndRoundNotGoing)
             return <BetButtonStyled onClick={bet}>
-                Сделать ставку {DEFAULT_USER_BET_VALUE}$</BetButtonStyled>;
+                Сделать ставку {crashConfig.defaultUserBetValue}$</BetButtonStyled>;
     };
 
     return (

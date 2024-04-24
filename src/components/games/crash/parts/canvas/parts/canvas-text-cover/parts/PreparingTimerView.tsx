@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {colorSchema} from '@lib/constants';
-import {useCrashStore} from '@lib/store/crash';
+import {useCrashStore} from '@components/games/crash/store';
 
 const StyledTimer = styled.span`
   font-size: 6rem;
