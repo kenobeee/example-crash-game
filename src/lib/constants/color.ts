@@ -19,7 +19,7 @@ export const colorSchema:ColorSchema = {
     accentText: '#fff',
     lighterAccentText: 'rgba(255,255,255,0.75)',
 
-    error: 'orangered',
+    error: '#821d82',
     success: 'green',
     accent: 'rgba(0, 255, 196, 0.15)'
 };

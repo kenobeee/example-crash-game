@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {CoefficientView, PreparingTimerView} from './parts';
+import {CoefficientView, PreparingTimerView, UserWonNotification} from './parts';
 
 import {useCrashStore} from '@components/games/crash/store';
 
@@ -28,6 +28,7 @@ export const CanvasTextCover = () => {
     const isRoundPreparing = useCrashStore(store => store.isRoundPreparing);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);
+    const userWon = useCrashStore(store => store.userWon);
 
     return (
         <Wrapper>
@@ -38,6 +39,7 @@ export const CanvasTextCover = () => {
                         ? <CoefficientView/>
                         : <></>}
             </SomeValue>
+            <UserWonNotification value={userWon}/>
         </Wrapper>
     );
 };
