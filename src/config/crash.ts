@@ -9,6 +9,7 @@ interface CrashConfig {
     canvas:{
         stage:Required<Size>
         airport:Required<Size>
+        city:Required<Size>
         airplane:Required<Size>
         explosion:Required<Size>
     }
@@ -28,6 +29,10 @@ export const crashConfig:CrashConfig = {
         airport: {
             width: 1200,
             height: 500
+        },
+        city: {
+            width: 1600,
+            height: 1000
         },
         airplane: {
             width: 300,

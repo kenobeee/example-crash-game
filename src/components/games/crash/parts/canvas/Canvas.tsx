@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import {Stage, Container} from '@pixi/react';
 
 import {colorSchema} from '@lib/constants';
+import {crashConfig} from '@config';
 
 import {AirplaneContainer, AirportBackground, CityBackground, Coefficient, Explosion, AirplaneBody} from './parts';
 
 import {useCoefficient, useAnimationTimeStamp} from '../../utils';
 import {useCrashStore} from '@lib/store/crash';
-import {crashConfig} from '@config';
 
 const Wrapper = styled.div`
   position: relative;
@@ -28,10 +28,15 @@ const TOTAL_FlAMES_FRAMES:number = 20;
 
 export const Canvas = () => {
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);
+    const isRoundPreparing = useCrashStore(store => store.isRoundPreparing);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
 
     useCoefficient();
-    useAnimationTimeStamp();
+    const {
+        cityBackgroundFrameIteration,
+        airportBackgroundFrameIteration,
+        airplaneFrameIteration
+    } = useAnimationTimeStamp(isRoundRunning, isRoundPreparing);
 
     const flames = useMemo(() =>
         Array(TOTAL_FlAMES_FRAMES)
@@ -51,9 +56,9 @@ export const Canvas = () => {
                 width={crashConfig.canvas.stage.width}
                 height={crashConfig.canvas.stage.height}>
                 <Container>
-                    <CityBackground/>
-                    <AirportBackground/>
-                    <AirplaneContainer>
+                    <CityBackground {...cityBackgroundFrameIteration}/>
+                    <AirportBackground {...airportBackgroundFrameIteration}/>
+                    <AirplaneContainer fromTo={airplaneFrameIteration}>
                         {isRoundEnding
                             ? <Explosion explosionFrames={explosion}/>
                             : isRoundRunning

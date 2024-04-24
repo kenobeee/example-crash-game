@@ -12,14 +12,13 @@ export const useCoefficient = () => {
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);
     const isRoundPreparing = useCrashStore(store => store.isRoundPreparing);
-    const setIsRoundRunning = useCrashStore(store => store.setIsRoundRunning);
-    const setIsRoundEnding = useCrashStore(store => store.setIsRoundEnding);
-    const setIsRoundPreparing = useCrashStore(store => store.setIsRoundPreparing);
-    const setAnimateTimeStamp = useCrashStore(store => store.setAnimateTimeStamp);
-    const setRoundStartDate = useCrashStore(store => store.setRoundStartDate);
+    const startRound = useCrashStore(store => store.startRound);
+    const endRound = useCrashStore(store => store.endRound);
+    const startPrepare = useCrashStore(store => store.startPrepare);
 
     let roundGoingInterval:NodeJS.Timeout;
     let roundEndingInterval:NodeJS.Timeout;
+    let roundPreparingInterval:NodeJS.Timeout;
 
     // eslint-disable-next-line consistent-return
     useEffect(() => {
@@ -28,9 +27,7 @@ export const useCoefficient = () => {
                 const coefficient = progress(new Date().getTime() - roundStartDate);
 
                 if (coefficient >= crashConfig.explosionCoefficient) {
-                    // alert('stop');
-                    setIsRoundRunning(false);
-                    setIsRoundEnding(true);
+                    endRound();
                 }
 
                 coefficient > 0 && setCoefficient(coefficient);
@@ -40,24 +37,19 @@ export const useCoefficient = () => {
         }
 
         if (isRoundEnding) {
-            setTimeout(() => {
-                setIsRoundEnding(false);
-                setIsRoundPreparing(true);
-                setCoefficient(0);
+            roundEndingInterval = setTimeout(() => {
+                startPrepare();
             }, crashConfig.endingTime);
 
             return () => clearInterval(roundEndingInterval);
         }
 
         if (isRoundPreparing) {
-            setCoefficient(1);
-            setAnimateTimeStamp(0);
-
-            setTimeout(() => {
-                setIsRoundPreparing(false);
-                setRoundStartDate(new Date().getTime());
-                setIsRoundRunning(true);
+            roundPreparingInterval = setTimeout(() => {
+                startRound();
             }, crashConfig.preparingTime);
+
+            return () => clearInterval(roundPreparingInterval);
         }
 
     }, [isRoundRunning, isRoundEnding]);

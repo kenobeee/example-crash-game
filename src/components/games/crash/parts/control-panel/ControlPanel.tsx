@@ -1,7 +1,9 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {useCrashStore} from '@lib/store/crash';
+
 import {colorSchema} from '@lib/constants';
+
+import {useCrashStore} from '@lib/store/crash';
 
 const Wrapper = styled.div`
   margin-top: 40px;
@@ -24,17 +26,11 @@ const StartButton = styled.button`
 `;
 
 export const ControlPanel = () => {
-    const setIsRoundRunning = useCrashStore(store => store.setIsRoundRunning);
-    const setRoundStartDate = useCrashStore(store => store.setRoundStartDate);
-
-    const startGame = useCallback(() => {
-        setRoundStartDate(new Date().getTime());
-        setIsRoundRunning(true);
-    }, []);
+    const startRound = useCrashStore(store => store.startRound);
 
     return (
         <Wrapper>
-            <StartButton onClick={startGame}>
+            <StartButton onClick={startRound}>
                 Start
             </StartButton>
         </Wrapper>

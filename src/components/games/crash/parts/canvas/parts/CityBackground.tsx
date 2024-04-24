@@ -4,26 +4,18 @@ import {Sprite} from '@pixi/react-animated';
 
 import {crashConfig} from '@config';
 
-import {animation, AnimationIteration} from '../animation';
-import {useCrashStore} from '@lib/store/crash';
+import {AnimatedFields} from '@components/games/crash/utils/useAnimationTimeStamp';
 
-export const CityBackground = () => {
-    const animateTimeStamp = useCrashStore(store => store.animateTimeStamp);
-    const isRoundRunning = useCrashStore(store => store.isRoundRunning);
+const {animationTimeStampInterval, canvas} = crashConfig;
+const {city: {width, height}} = canvas;
 
-    const physics = useMemo(():{
-        from:AnimationIteration
-        to:AnimationIteration
-    } => ({
-        from: animation.cityBg[animateTimeStamp],
-        to: animation.cityBg[animateTimeStamp + 1]
-    }), [animateTimeStamp, isRoundRunning]);
-
-    return (
-        // @ts-ignore
-        <Spring native {...physics} config={{duration: crashConfig.animationTimeStampInterval}}>
-            {(props) =>
-                <Sprite image={require('/assets/img/games/crash/city-bg.jpg')} {...props} width={1600} height={1000} />}
-        </Spring>
-    );
-};
+export const CityBackground = (fromTo:AnimatedFields) => useMemo(() => (
+    <Spring {...fromTo} config={{duration: animationTimeStampInterval}}>
+        {(props:any) =>
+            <Sprite
+                {...props}
+                width={width}
+                height={height}
+                image={require('/assets/img/games/crash/city-bg.jpg')}/>}
+    </Spring>
+), [fromTo]);
