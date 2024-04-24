@@ -23,7 +23,7 @@ export const SkyBackground = () => {
         // @ts-ignore
         <Spring native {...physics} config={{duration: crashConfig.animationTimeStampInterval}}>
             {(props) =>
-                <Sprite image={require('/assets/img/sky-bg.jpg')} {...props} />}
+                <Sprite image={require('/assets/img/sky-bg.jpg')} {...props} width={2000} height={1400} />}
         </Spring>
     );
 };

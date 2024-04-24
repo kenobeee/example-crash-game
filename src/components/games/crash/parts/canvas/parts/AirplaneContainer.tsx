@@ -7,7 +7,7 @@ import {crashConfig} from '@config';
 import {animation, AnimationIteration} from '../animation';
 import {useCrashStore} from '@lib/store/crash';
 
-export const Airplane = ({children}:{children:ReactNode}) => {
+export const AirplaneContainer = ({children}:{children:ReactNode}) => {
     const animateTimeStamp = useCrashStore(store => store.animateTimeStamp);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
 

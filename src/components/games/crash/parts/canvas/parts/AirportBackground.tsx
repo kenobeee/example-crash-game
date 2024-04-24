@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {Spring} from 'react-spring';
-import {Sprite} from '@pixi/react-animated';
+import {Container, Sprite} from '@pixi/react-animated';
 
 import {crashConfig} from '@config';
 
@@ -16,14 +16,25 @@ export const AirportBackground = () => {
         to:AnimationIteration
     } => ({
         from: animation.airport[animateTimeStamp],
-        to: animation.airport[animateTimeStamp + 1]
+        to: animation.airport[animateTimeStamp + 1],
     }), [animateTimeStamp, isRoundRunning]);
 
     return (
-        // @ts-ignore
-        <Spring native {...physics} config={{duration: crashConfig.animationTimeStampInterval}}>
-            {(props) =>
-                <Sprite image={require('/assets/img/airport-bg.png')} {...props} />}
-        </Spring>
+        <>
+            <Spring {...physics} config={{duration: crashConfig.animationTimeStampInterval}}>
+                {(props:any) =>
+                    <Container {...props}>
+                        <Sprite
+                            image={require('/assets/img/airport-bg.png')}
+                            width={crashConfig.canvas.airport.width}
+                            height={crashConfig.canvas.airport.height}/>
+                        <Sprite
+                            image={require('/assets/img/airport-bg.png')}
+                            width={crashConfig.canvas.airport.width}
+                            height={crashConfig.canvas.airport.height}
+                            x={crashConfig.canvas.airport.width}/>
+                    </Container>}
+            </Spring>
+        </>
     );
 };
