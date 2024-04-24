@@ -1,4 +1,4 @@
-export {SkyBackground} from './SkyBackground';
+export {CityBackground} from './CityBackground';
 export {AirportBackground} from './AirportBackground';
 export {AirplaneContainer} from './AirplaneContainer';
 export {AirplaneBody} from './AirplaneBody';

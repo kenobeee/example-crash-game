@@ -10,13 +10,14 @@ const Wrapper = styled.div`
 `;
 
 const StartButton = styled.button`
-  padding: 8px 20px;
+  width: 360px;
+  height: 80px;
 
   background-color: ${colorSchema.secondaryBg};
   border: 1px solid ${colorSchema.border};
   
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 500;
   color: ${colorSchema.accentText};
   
   cursor: pointer;

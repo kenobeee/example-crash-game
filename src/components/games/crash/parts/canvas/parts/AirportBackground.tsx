@@ -28,11 +28,6 @@ export const AirportBackground = () => {
                             image={require('/assets/img/airport-bg.png')}
                             width={crashConfig.canvas.airport.width}
                             height={crashConfig.canvas.airport.height}/>
-                        <Sprite
-                            image={require('/assets/img/airport-bg.png')}
-                            width={crashConfig.canvas.airport.width}
-                            height={crashConfig.canvas.airport.height}
-                            x={crashConfig.canvas.airport.width}/>
                     </Container>}
             </Spring>
         </>

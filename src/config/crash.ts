@@ -26,12 +26,12 @@ export const crashConfig:CrashConfig = {
             height: 600
         },
         airport: {
-            width: 1400,
+            width: 1200,
             height: 500
         },
         airplane: {
-            width: 360,
-            height: 100
+            width: 300,
+            height: 120
         },
         explosion: {
             width: 500,
