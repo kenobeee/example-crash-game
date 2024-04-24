@@ -2,6 +2,7 @@ import {create} from 'zustand';
 
 export interface ICrashState {
     coefficient:number
+    preparingTimer:number
     roundStartDate:number
     userBet:number | null
     userWon:number | null
@@ -12,6 +13,7 @@ export interface ICrashState {
 
 export interface ICrashActions {
     setCoefficient:(value:ICrashState['coefficient']) => void
+    decrementPreparingTimer:() => void
     startRound:() => void
     startPrepare:() => void
     endRound:() => void
@@ -26,6 +28,7 @@ export const DEFAULT_USER_BET_VALUE:number = 1;
 export const useCrashStore = create<CrashStore>((set) =>
     ({
         coefficient: 1,
+        preparingTimer: 5,
         roundStartDate: 0,
         userBet: null,
         userWon: null,
@@ -35,6 +38,10 @@ export const useCrashStore = create<CrashStore>((set) =>
         setCoefficient: (value) => set(state => ({
             ...state,
             coefficient: value
+        })),
+        decrementPreparingTimer: () => set(state => ({
+            ...state,
+            preparingTimer: state.preparingTimer - 1
         })),
         startRound: () => set(state => ({
             ...state,
@@ -52,6 +59,7 @@ export const useCrashStore = create<CrashStore>((set) =>
             isRoundEnding: false,
             isRoundPreparing: true,
             coefficient: 1,
+            preparingTimer: 5,
             userBet: null,
             userWon: null,
         })),

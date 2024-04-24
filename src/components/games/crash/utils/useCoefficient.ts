@@ -8,6 +8,7 @@ const progress = (ms:number):number => Math.floor(100 * Math.pow(Math.exp(1), 0.
 
 export const useCoefficient = () => {
     const setCoefficient = useCrashStore(store => store.setCoefficient);
+    const decrementPreparingTimer = useCrashStore(store => store.decrementPreparingTimer);
     const roundStartDate = useCrashStore(store => store.roundStartDate);
     const isRoundRunning = useCrashStore(store => store.isRoundRunning);
     const isRoundEnding = useCrashStore(store => store.isRoundEnding);
@@ -17,7 +18,7 @@ export const useCoefficient = () => {
     const startPrepare = useCrashStore(store => store.startPrepare);
 
     let roundGoingInterval:NodeJS.Timeout;
-    let roundEndingInterval:NodeJS.Timeout;
+    let roundEndingTimeout:NodeJS.Timeout;
     let roundPreparingInterval:NodeJS.Timeout;
 
     // eslint-disable-next-line consistent-return
@@ -37,20 +38,27 @@ export const useCoefficient = () => {
         }
 
         if (isRoundEnding) {
-            roundEndingInterval = setTimeout(() => {
+            roundEndingTimeout = setTimeout(() => {
                 startPrepare();
             }, crashConfig.endingTime);
 
-            return () => clearInterval(roundEndingInterval);
+            return () => clearInterval(roundEndingTimeout);
         }
 
+    }, [isRoundRunning, isRoundEnding]);
+
+    // eslint-disable-next-line consistent-return
+    useEffect(() => {
         if (isRoundPreparing) {
-            roundPreparingInterval = setTimeout(() => {
-                startRound();
-            }, crashConfig.preparingTime);
+            const startPreparingTime = new Date().getTime();
+
+            roundPreparingInterval = setInterval(() => {
+                if (new Date().getTime() - startPreparingTime >= crashConfig.preparingTime) startRound();
+
+                decrementPreparingTimer();
+            }, 1000);
 
             return () => clearInterval(roundPreparingInterval);
         }
-
-    }, [isRoundRunning, isRoundEnding, isRoundPreparing]);
+    }, [isRoundPreparing]);
 };

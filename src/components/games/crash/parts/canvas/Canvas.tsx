@@ -5,7 +5,7 @@ import {Stage, Container} from '@pixi/react';
 import {colorSchema} from '@lib/constants';
 import {crashConfig} from '@components/games/crash/config';
 
-import {AirplaneContainer, AirportBackground, CityBackground, Coefficient, Explosion, AirplaneBody} from './parts';
+import {AirplaneContainer, AirportBackground, CityBackground, CanvasCover, Explosion, AirplaneBody} from './parts';
 
 import {useCoefficient, useAnimationTimeStamp} from '../../utils';
 import {useCrashStore} from '@lib/store/crash';
@@ -68,7 +68,7 @@ export const Canvas = () => {
                     </AirplaneContainer>
                 </Container>
             </Stage>
-            <Coefficient/>
+            <CanvasCover/>
         </Wrapper>
     );
 };

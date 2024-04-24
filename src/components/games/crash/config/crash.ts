@@ -4,7 +4,7 @@ interface CrashConfig {
     coefficientUpdateInterval:number, // ms
     animationTimeStampInterval:number // ms
     explosionCoefficient:number // float | integer
-    preparingTime:number // ms
+    preparingTime:number // s
     endingTime:number // ms
     canvas:{
         stage:Required<Size>
