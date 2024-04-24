@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
   background-color: ${colorSchema.secondaryBg};
   border-radius: 16px;
-  border: ${colorSchema.border};
+  border: 2px solid ${colorSchema.accent};
 
   overflow: hidden;
 `;

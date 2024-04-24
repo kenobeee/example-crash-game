@@ -3,8 +3,11 @@ enum Colors {
     secondaryBg = 'secondaryBg',
 
     accentText = 'accentText',
+    lighterAccentText = 'lighterAccentText',
 
-    border = 'border'
+    error = 'error',
+    success = 'success',
+    accent = 'accent'
 }
 
 type ColorSchema = Record<Colors, string>;
@@ -14,6 +17,9 @@ export const colorSchema:ColorSchema = {
     secondaryBg: '#1d2023',
 
     accentText: '#fff',
+    lighterAccentText: 'rgba(255,255,255,0.75)',
 
-    border: '2px solid rgba(0, 255, 196, 0.15)'
+    error: 'orangered',
+    success: 'green',
+    accent: 'rgba(0, 255, 196, 0.15)'
 };

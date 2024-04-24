@@ -52,5 +52,5 @@ export const useCoefficient = () => {
             return () => clearInterval(roundPreparingInterval);
         }
 
-    }, [isRoundRunning, isRoundEnding]);
+    }, [isRoundRunning, isRoundEnding, isRoundPreparing]);
 };
